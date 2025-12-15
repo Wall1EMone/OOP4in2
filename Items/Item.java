@@ -4,17 +4,25 @@ package Items;
 import java.util.List;
 
 public abstract class Item {
+    private String brand;
     private String name;
-    private double price;
-    private List<String> clubs;
+    private double priceDay;
+
 
     public Item(){
 
     }
-    public Item(String name, double price, List<String> clubs){
+    public Item(String brand,String name, double priceDay){
+        this.brand = brand;
         this.name = name;
-        this.price = price;
-        this.clubs = clubs;
+        this.priceDay = priceDay;
+
+    }
+    public String getBrand(){
+        return brand;
+    }
+    public void setBrand(String brand){
+        this.brand = brand;
     }
     public String getName(){
         return name;
@@ -22,18 +30,18 @@ public abstract class Item {
     public void setName(String name){
         this.name = name;
     }
-    public double getPrice(){
-        return price;
+    public double getPriceDay(){
+        return priceDay;
     }
-    public void setPrice(double price){
-        this.price = price;
+    public void setPriceDay(double priceDay){
+        this.priceDay = priceDay;
     }
-    public List<String> getClubs(){
-        return clubs;
-    }
-    public void setClubs(List<String> clubs) {
-        this.clubs = clubs;
-    }
+//    public List<String> getCars(){
+//        return cars;
+//    }
+//    public void setCars(List<String> cars) {
+//        this.cars = cars;
+//    }
 
     public abstract void ShowInfo();
 }

@@ -24,4 +24,11 @@ public class RentalRegistry {
         }
         return rented;
     }
+    public double getTotalIncome(){
+        double sum = 0;
+        for(Rental r : rentals){
+            sum += r.getTotalPrice();
+        }
+        return sum;
+    }
 }
