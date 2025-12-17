@@ -1,8 +1,9 @@
+package Items;
+
 import Inventory.Inventory;
-import Items.Car;
-import Items.Trailer;
-import Members.MemberRegistry;
 import Rental.RentalRegistry;
+import Rental.TrailerRentalButton;
+import SearchButtons.SearchButtonTrailer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -14,18 +15,20 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class TrailerButton {
-    Inventory inventory = new Inventory();
     SearchButtonTrailer searchButtonTrailer = new SearchButtonTrailer();
 
+    Inventory inventory;
     TrailerRentalButton trailerRentalButton;
     RentalRegistry rentalRegistry;
 
     TableView<Trailer> trailerTable = new TableView<>();
     TextField brandInput, nameInput, priceInput, brakeInput;
+
     //Måste göra konstruktor och attribut för att jag ska kunna ha samma lista för att räkna intäkter
-    public TrailerButton(RentalRegistry rentalRegistry){
+    public TrailerButton(RentalRegistry rentalRegistry, Inventory inventory){
         this.rentalRegistry = rentalRegistry;
         this.trailerRentalButton = new TrailerRentalButton(rentalRegistry);
+        this.inventory = inventory;
     }
 
     public void trailerButton(String title){
@@ -75,9 +78,9 @@ public class TrailerButton {
         Button button3 = new Button("Sök");
         button3.setOnAction(e -> searchButtonTrailer.searchTrailer());
 
-
+        trailerTable.getColumns().clear();
         trailerTable.getColumns().addAll(trailerBrand, trailerName,trailerPrice, trailerBrake);
-        trailerTable.setItems(FXCollections.observableArrayList(inventory.getTrailers()));
+        trailerTable.setItems(inventory.getTrailers());//kollar till inventory
         trailerTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);//Ha detta för att radera flera
 
         HBox hBox = new HBox();
@@ -103,7 +106,7 @@ public class TrailerButton {
         newTrailers.setBrake(brakeInput.getText());
 
         //Lägga till det nya i lista och table
-        trailerTable.getItems().addAll(newTrailers);
+        inventory.getTrailers().add(newTrailers);
         //Rensa textfält
         brandInput.clear();
         nameInput.clear();

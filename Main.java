@@ -1,4 +1,9 @@
+import CancelButton.CancelCarButton;
+import Income.IncomeButton;
 import Inventory.Inventory;
+import Items.CarButton;
+import Items.TrailerButton;
+import Members.MemberButton;
 import Rental.RentalRegistry;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -12,10 +17,11 @@ import javafx.geometry.Insets;
 
 public class Main extends Application {
     RentalRegistry rentalRegistry = new RentalRegistry();//gör så att har samma lista, rentalRegistry så att det kan räkna ut intäkter
+    Inventory inventory = new Inventory();
     IncomeButton incomeButton = new IncomeButton(rentalRegistry);
-    CarButton carbutton = new CarButton(rentalRegistry);
+    CarButton carbutton = new CarButton(rentalRegistry, inventory);
     MemberButton memberbutton = new MemberButton();
-    TrailerButton trailerButton = new TrailerButton(rentalRegistry);
+    TrailerButton trailerButton = new TrailerButton(rentalRegistry, inventory);
 
     CancelCarButton cancelCarButton = new CancelCarButton();
     Stage window;

@@ -1,8 +1,6 @@
-import Inventory.Inventory;
-import Items.Car;
-import Items.Trailer;
-import Members.Member;
-import Members.MemberRegistry;
+package Members;
+
+import SearchButtons.SearchButtonMember;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;

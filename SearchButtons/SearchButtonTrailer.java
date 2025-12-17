@@ -1,5 +1,6 @@
+package SearchButtons;
+
 import Inventory.Inventory;
-import Items.Car;
 import Items.Trailer;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
