@@ -59,7 +59,7 @@ public class Main extends Application {
         GridPane.setConstraints(button1,5,4);
         button1.setOnAction(e -> carbutton.carButton("Bilar"));
 
-        Button button2 = new Button("Släpp vagnar");
+        Button button2 = new Button("Släp vagnar");
         GridPane.setConstraints(button2,5,5);
         button2.setOnAction(e -> trailerButton.trailerButton("Släpvagnar"));
 
