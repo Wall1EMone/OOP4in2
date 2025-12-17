@@ -1,8 +1,9 @@
+package Items;
+
 import Inventory.Inventory;
-import Items.Car;
-import Items.Trailer;
-import Members.Member;
+import Rental.CarRentalButton;
 import Rental.RentalRegistry;
+import SearchButtons.SearchButtonCar;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -14,9 +15,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class CarButton {
-    Inventory inventory = new Inventory();
     SearchButtonCar searchButtonCar = new SearchButtonCar();
 
+    Inventory inventory;
     RentalRegistry rentalRegistry;
     CarRentalButton carRentalButton;
 
@@ -24,11 +25,13 @@ public class CarButton {
     TextField brandInput, nameInput, priceInput, fuelInput;
 
     //Måste göra konstruktor och attribut för att jag ska kunna ha samma lista för att räkna intäkter
-    public CarButton(RentalRegistry rentalRegistry){
+    public CarButton(RentalRegistry rentalRegistry, Inventory inventory){
         this.rentalRegistry = rentalRegistry;
         this.carRentalButton = new CarRentalButton(rentalRegistry);
+        this.inventory = inventory;
     }
     public void carButton(String title){
+
         Stage window = new Stage();
         window.setTitle("Mones biluthyrning");
 
@@ -49,8 +52,9 @@ public class CarButton {
         TableColumn<Car, String> carFuel = new TableColumn<>("Bränsle");
         carFuel.setCellValueFactory(new PropertyValueFactory<>("fuel"));
 
+        carTable.getColumns().clear();//Måste ha detta för att det inte bli som dubbletter. Nu rensar columner och sedan lägga till listan
         carTable.getColumns().addAll(carBrand, carName, carPrice, carFuel);
-        carTable.setItems(FXCollections.observableArrayList(inventory.getCars()));
+        carTable.setItems(inventory.getCars());//kollar till inventory
         carTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);//Har detta så att det kan radera flera
 
         //Kod för input
@@ -105,7 +109,7 @@ public class CarButton {
         newCar.setFuel(fuelInput.getText());
 
         //Lägga till det nya i lista och table
-        carTable.getItems().addAll(newCar);
+        inventory.getCars().add(newCar);
         //Rensa textfält
         brandInput.clear();
         nameInput.clear();

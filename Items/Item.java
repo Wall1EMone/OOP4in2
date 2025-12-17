@@ -36,12 +36,6 @@ public abstract class Item {
     public void setPriceDay(double priceDay){
         this.priceDay = priceDay;
     }
-//    public List<String> getCars(){
-//        return cars;
-//    }
-//    public void setCars(List<String> cars) {
-//        this.cars = cars;
-//    }
 
     public abstract void ShowInfo();
 }

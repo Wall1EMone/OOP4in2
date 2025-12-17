@@ -1,7 +1,7 @@
+package Rental;
+
 import PricePolicy.Pension;
 import PricePolicy.Student;
-import Rental.Rental;
-import Rental.RentalRegistry;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
