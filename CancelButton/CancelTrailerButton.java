@@ -39,12 +39,12 @@ public class CancelTrailerButton {
         GridPane.setConstraints(lastnameInput,1,1);
 
         //Label för bil
-        Label carName = new Label("Namn/model på bilen");
+        Label carName = new Label("Namn/model på släpvagn");
         GridPane.setConstraints(carName,0,2);
 
         //Textfield för bil
         TextField trailerNameInput = new TextField();
-        trailerNameInput.setPromptText("namn/model på bilen");
+        trailerNameInput.setPromptText("namn/model på släpvagn");
         GridPane.setConstraints(trailerNameInput,1,2);
 
         //Label för mail

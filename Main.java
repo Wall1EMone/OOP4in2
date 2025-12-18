@@ -1,4 +1,5 @@
 import CancelButton.CancelCarButton;
+import CancelButton.CancelTrailerButton;
 import Income.IncomeButton;
 import Inventory.Inventory;
 import Items.CarButton;
@@ -24,6 +25,7 @@ public class Main extends Application {
     TrailerButton trailerButton = new TrailerButton(rentalRegistry, inventory);
 
     CancelCarButton cancelCarButton = new CancelCarButton();
+    CancelTrailerButton cancelTrailerButton = new CancelTrailerButton();
     Stage window;
 
 
@@ -73,6 +75,7 @@ public class Main extends Application {
 
         Button button5 = new Button("Avboka släpvagn");
         GridPane.setConstraints(button5, 5,8);
+        button5.setOnAction(e-> cancelTrailerButton.cancelTrailer());
 
         gridPane.getChildren().addAll(info, choice,button,button1,button2,button3, button4, button5);
 
